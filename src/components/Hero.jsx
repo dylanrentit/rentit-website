@@ -17,7 +17,6 @@ export default function Hero() {
     setSlotWidth(Math.max(...widths, 0));
   }, []);
 
-  // word cycling (respect reduced motion)
   const prefersReducedMotion = useReducedMotion();
   const [i, setI] = useState(0);
 
@@ -33,7 +32,7 @@ export default function Hero() {
     <section id="hero" className="relative pt-20 md:pt-24 lg:pt-28 overflow-visible">
       <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
         {/* LEFT: copy */}
-        <div className="order-1 space-y-4 overflow-visible">
+        <div className="order-1 space-y-4">
           {/* badges */}
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
@@ -74,7 +73,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex gap-3">
             <a
-              className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition"
+              className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold hover:bg-brand-700 transition"
               href="#signup"
             >
               Get early access
@@ -112,14 +111,14 @@ export default function Hero() {
 
         {/* RIGHT: phone (desktop right, mobile below) */}
         <div className="order-2 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
-          {/* decorative glow — desktop only so it never overlaps/crops text on mobile */}
+          {/* desktop-only glow behind, removed on mobile so nothing overlaps the text */}
           <div className="hidden lg:block pointer-events-none absolute -z-10 right-[-12%] top-1/2 -translate-y-1/2 w-[58vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
 
-          {/* phone image — NO border/container, just a rounded image with shadow */}
+          {/* JUST THE IMAGE — no border, no container, no shadow */}
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="mx-auto w-[260px] sm:w-[320px] md:w-[380px] lg:w-[480px] aspect-[9/19] rounded-[40px] shadow-[0_25px_80px_rgba(17,17,17,0.22)] object-cover"
+            className="mx-auto w-[260px] sm:w-[320px] md:w-[380px] lg:w-[520px] h-auto object-contain"
           />
         </div>
       </div>
