@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative isolate pt-6 md:pt-24 lg:pt-28">
       {/* ----- POINTER (desktop/laptop) LAYOUT ----- */}
-      <div className="pointer-only container-xy grid items-center lg:grid-cols-2">
+      <div className="pointer-only container-xy grid gap-40 items-center lg:grid-cols-2">
         {/* LEFT */}
         <div className="order-1 space-y-4">
           <div className="flex flex-wrap gap-2 text-xs">
@@ -93,7 +93,7 @@ export default function Hero() {
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="block h-auto object-contain object-center w-[clamp(580px,50vw,780px)] max-w-[800px]"
+            className="block h-auto object-contain object-center w-[clamp(400px,50vw,350px)]"
           />
         </div>
       </div>
