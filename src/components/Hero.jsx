@@ -30,60 +30,64 @@ export default function Hero() {
   const word = WORDS[i];
 
   return (
-    <section id="hero" className="section-pad relative z-10">
-      <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
-        {/* LEFT */}
-        <div className="space-y-4 relative">
+    <section id="hero" className="relative pt-20 md:pt-24 lg:pt-28">
+      <div className="container-xy grid lg:grid-cols-2 gap-10 items-center min-h-[70svh]">
+        {/* LEFT: copy */}
+        <div className="order-1 space-y-4">
+          {/* badges */}
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
             <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">NZ Made</span>
             <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Sharing Economy</span>
           </div>
 
-          {/* NEW HEADLINE */}
+          {/* headline */}
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none">
-          <span className="block">Buy less.</span>
-
-          {/* make this line an anchor + underline */}
-          <span className="block relative ray-anchor" data-ray="underline">
-            <span className="align-baseline">Rent&nbsp;</span>
-            <span
-              className="relative inline-block align-baseline h-[1em] overflow-hidden top-[5px]"
-              style={{ width: slotWidth ? `${slotWidth}px` : "auto" }}
-            >
-      <AnimatePresence mode="wait">
-      <motion.span
-        key={word}
-        initial={{ y: "100%", opacity: 0 }}
-        animate={{ y: "0%", opacity: 1 }}
-        exit={{ y: "-100%", opacity: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-0 bottom-0 bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-fuchsia-500 whitespace-nowrap"
-        style={{ lineHeight: 1 }}
-      >
-        {word}
-      </motion.span>
-
-      </AnimatePresence>
-    </span>
-  </span>
-</h1>
-
+            <span className="block">Buy less.</span>
+            <span className="block">
+              <span className="align-baseline">Rent&nbsp;</span>
+              <span
+                className="relative inline-block align-baseline h-[1em] overflow-hidden translate-y-[2px]"
+                style={{ width: slotWidth ? `${slotWidth}px` : "auto" }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={word}
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-100%", opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute left-0 bottom-0 bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-fuchsia-500 whitespace-nowrap"
+                    style={{ lineHeight: 1 }}
+                  >
+                    {word}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
+          </h1>
 
           <p className="text-slate-600 text-lg max-w-xl">
             Rent anything, anytime, anywhere in New Zealand.
           </p>
 
+          {/* CTAs */}
           <div className="flex gap-3">
-            <a className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition" href="#signup">
+            <a
+              className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition"
+              href="#signup"
+            >
               Get early access
             </a>
-            <a className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50" href="#how">
+            <a
+              className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50"
+              href="#how"
+            >
               See how it works
             </a>
           </div>
 
-          {/* marquee stays the same */}
+          {/* categories marquee */}
           <div className="overflow-hidden border-y border-slate-200 mt-6">
             <ul className="flex gap-8 py-2 text-xs uppercase tracking-[.2em] text-slate-500 animate-[marquee_26s_linear_infinite] whitespace-nowrap">
               <li>power tools</li><li>cameras</li><li>kayaks</li><li>dj gear</li><li>camping</li>
@@ -106,30 +110,23 @@ export default function Hero() {
           </div>
         </div>
 
-// top of the page hero
-<section className="pt-6 md:pt-10 lg:pt-12">
-  <div className="container-xy grid md:grid-cols-2 gap-8 items-center min-h-[70svh]">
-    {/* LEFT: headline etc... */}
+        {/* RIGHT: phone */}
+        <div className="order-2 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
+          {/* decorative glow behind the phone */}
+          <div className="pointer-events-none absolute -z-10 right-[-12%] top-1/2 -translate-y-1/2 w-[58vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
 
-    {/* RIGHT: phone image */}
-    <div className="justify-self-center md:justify-self-end">
-      <div className="relative mx-auto w-[260px] sm:w-[320px] md:w-[380px] aspect-[9/19] rounded-[40px] overflow-hidden shadow-2xl border border-slate-200 bg-white">
-        <img
-          src="/images/screen-home.png"
-          alt="App screenshot"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+          {/* the phone itself (no absolute on mobile) */}
+          <div className="relative mx-auto w-[250px] sm:w-[310px] md:w-[360px] lg:w-[460px] aspect-[9/19] rounded-[40px] overflow-hidden shadow-[0_25px_80px_rgba(17,17,17,0.22)] border border-slate-200 bg-white">
+            <img
+              src="/images/screen-home.png"
+              alt="App screenshot"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-
-</div>
-
-
-
-      {/* marquee keyframes (as before) */}
+      {/* marquee keyframes */}
       <style>{`@keyframes marquee{to{transform:translateX(-50%)}}`}</style>
     </section>
   );
