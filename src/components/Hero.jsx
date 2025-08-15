@@ -27,7 +27,7 @@ export default function Hero() {
   const word = WORDS[i];
 
   return (
-    <section id="hero" className="relative isolate pt-12 md:pt-24 lg:pt-28">
+    <section id="hero" className="relative isolate pt-6 md:pt-24 lg:pt-28">
       {/* ----- POINTER (desktop/laptop) LAYOUT ----- */}
       <div className="pointer-only container-xy grid items-center lg:grid-cols-2">
         {/* LEFT */}
@@ -158,14 +158,15 @@ export default function Hero() {
         </div>
 
         {/* phone under the copy, always perfectly centered */}
-        <div className="relative mt-10">
-          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[90vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
+       <div className="relative mt-10">
+          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[95vw] max-w-[820px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="block mx-auto h-auto object-contain object-center w-[min(98vw,640px)]"
+            className="block mx-auto h-auto object-contain object-center w-[min(100vw,700px)]"
           />
         </div>
+
       </div>
 
       <style>{`
