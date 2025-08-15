@@ -18,7 +18,7 @@ export default function Header() {
     >
       <div className="container-xy">
         {/* MOBILE: 3 columns – menu / logo / CTA */}
-        <div className="flex items-center justify-between md:hidden py-3">
+        <div className="flex items-center justify-between md:hidden py-1">
           <button
             aria-label="Menu"
             aria-expanded={open}
@@ -30,11 +30,16 @@ export default function Header() {
             </svg>
           </button>
 
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/images/logo-mark.png" alt="Rent It" className="h-8 w-8 rounded" />
-            <span className="font-bold text-lg text-slate-900">Rent It</span>
-          </Link>
-
+          <a href="/" className="flex items-baseline gap-1" aria-label="Rent It — Home">
+          <img
+            src="/images/logo-square.png"       // put your square photo here
+            alt="Rent It mark"
+            className="h-[5em] w-[3em] rounded-md object-cover"
+          />
+          <span className="font-black tracking-tight leading-none text-xl md:text-2xl  translate-y-[-30px]">
+            Rent <span className="text-brand-600">It</span>
+          </span>
+        </a>
           <Link
             to="/signup"
             className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
@@ -44,11 +49,17 @@ export default function Header() {
         </div>
 
         {/* DESKTOP: logo left + links + CTA */}
-        <div className="hidden md:flex items-center justify-between py-3">
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/images/logo-mark.png" alt="Rent It" className="h-8 w-8 rounded" />
-            <span className="font-bold text-slate-900 text-lg">Rent It</span>
-          </Link>
+        <div className="hidden md:flex items-center justify-between py-1">
+          <a href="/" className="flex items-baseline gap-1" aria-label="Rent It — Home">
+          <img
+            src="/images/logo-square.png"       // put your square photo here
+            alt="Rent It mark"
+            className="h-[5em] w-[3em] rounded-md object-cover"
+          />
+          <span className="font-black tracking-tight leading-none text-xl md:text-2xl  translate-y-[-30px]">
+            Rent <span className="text-brand-600">It</span>
+          </span>
+        </a>
 
           <nav className="flex items-center gap-6">
             {LINKS.map(({ to, label }) => (
@@ -77,7 +88,7 @@ export default function Header() {
 
       {/* mobile drawer */}
       <div className={`md:hidden border-t border-slate-200 ${open ? "block" : "hidden"}`}>
-        <div className="container-xy py-3 grid gap-2">
+        <div className="container-xy py-1 grid gap-2">
           {LINKS.map(({ to, label }) => (
             <NavLink
               key={to}

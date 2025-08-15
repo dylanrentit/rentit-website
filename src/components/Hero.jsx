@@ -27,9 +27,9 @@ export default function Hero() {
   const word = WORDS[i];
 
   return (
-    <section id="hero" className="relative isolate pt-20 md:pt-24 lg:pt-28">
+    <section id="hero" className="relative isolate pt-12 md:pt-24 lg:pt-28">
       {/* ----- POINTER (desktop/laptop) LAYOUT ----- */}
-      <div className="pointer-only container-xy grid gap-10 items-center lg:grid-cols-2">
+      <div className="pointer-only container-xy grid items-center lg:grid-cols-2">
         {/* LEFT */}
         <div className="order-1 space-y-4">
           <div className="flex flex-wrap gap-2 text-xs">
@@ -93,7 +93,7 @@ export default function Hero() {
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="block h-auto object-contain object-center w-[clamp(360px,40vw,720px)] max-w-full"
+            className="block h-auto object-contain object-center w-[clamp(580px,50vw,780px)] max-w-[800px]"
           />
         </div>
       </div>
@@ -159,11 +159,11 @@ export default function Hero() {
 
         {/* phone under the copy, always perfectly centered */}
         <div className="relative mt-10">
-          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[90vw] max-w-[720px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
+          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[90vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="block mx-auto h-auto object-contain object-center w-[min(92vw,560px)]"
+            className="block mx-auto h-auto object-contain object-center w-[min(98vw,640px)]"
           />
         </div>
       </div>
