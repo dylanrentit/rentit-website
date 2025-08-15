@@ -106,12 +106,24 @@ export default function Hero() {
           </div>
         </div>
 
-<div className="relative grid place-items-center">
-  <div className="w-[420px] md:w-[520px] aspect-[9/18] rounded-[40px] overflow-hidden ray-anchor">
-    <img src="/images/screen-home.png" alt="App screenshot" className="w-full h-full object-cover" />
+// top of the page hero
+<section className="pt-6 md:pt-10 lg:pt-12">
+  <div className="container-xy grid md:grid-cols-2 gap-8 items-center min-h-[70svh]">
+    {/* LEFT: headline etc... */}
+
+    {/* RIGHT: phone image */}
+    <div className="justify-self-center md:justify-self-end">
+      <div className="relative mx-auto w-[260px] sm:w-[320px] md:w-[380px] aspect-[9/19] rounded-[40px] overflow-hidden shadow-2xl border border-slate-200 bg-white">
+        <img
+          src="/images/screen-home.png"
+          alt="App screenshot"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+    </div>
   </div>
-  <div className="absolute -z-10 -bottom-12 h-48 w-full blur-3xl bg-brand-500/30 rounded-full" />
-</div>
+</section>
+
 
 </div>
 
