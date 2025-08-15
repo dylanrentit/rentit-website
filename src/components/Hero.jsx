@@ -159,13 +159,14 @@ export default function Hero() {
 
         {/* phone under the copy, always perfectly centered */}
        <div className="relative mt-10">
-          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[95vw] max-w-[820px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
+          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[100vw] max-w-none aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
           <img
             src="/images/screen-home.png"
             alt="App screenshot"
-            className="block mx-auto h-auto object-contain object-center w-[min(100vw,700px)]"
+            className="block mx-auto h-auto object-contain object-center w-full"
           />
         </div>
+
 
       </div>
 
