@@ -5,7 +5,7 @@ const WORDS = ["bikes", "tools", "kayaks", "cameras", "drones", "tents", "speake
 const STEP_MS = 2500;
 
 export default function Hero() {
-  // measure the widest word so the slot doesn't reflow horizontally
+  // measure the widest word so the animated slot doesn't reflow
   const [slotWidth, setSlotWidth] = useState(null);
   const measurerRef = useRef(null);
 
@@ -17,7 +17,7 @@ export default function Hero() {
     setSlotWidth(Math.max(...widths, 0));
   }, []);
 
-  // word cycling (respects reduced motion)
+  // word cycling (respect reduced motion)
   const prefersReducedMotion = useReducedMotion();
   const [i, setI] = useState(0);
 
@@ -30,10 +30,10 @@ export default function Hero() {
   const word = WORDS[i];
 
   return (
-    <section id="hero" className="relative pt-20 md:pt-24 lg:pt-28">
-      <div className="container-xy grid lg:grid-cols-2 gap-10 items-center min-h-[70svh]">
+    <section id="hero" className="relative pt-20 md:pt-24 lg:pt-28 overflow-visible">
+      <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
         {/* LEFT: copy */}
-        <div className="order-1 space-y-4">
+        <div className="order-1 space-y-4 overflow-visible">
           {/* badges */}
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
@@ -90,8 +90,8 @@ export default function Hero() {
           {/* categories marquee */}
           <div className="overflow-hidden border-y border-slate-200 mt-6">
             <ul className="flex gap-8 py-2 text-xs uppercase tracking-[.2em] text-slate-500 animate-[marquee_26s_linear_infinite] whitespace-nowrap">
-              <li>power tools</li><li>cameras</li><li>kayaks</li><li>dj gear</li><li>camping</li>
-              <li>e-bikes</li><li>lenses</li><li>party gear</li><li>gardening</li><li>surfboards</li>
+              <li>cameras</li><li>kayaks</li><li>dj gear</li><li>camping</li><li>e-bikes</li>
+              <li>lenses</li><li>party gear</li><li>gardening</li><li>surfboards</li><li>power tools</li>
             </ul>
           </div>
 
@@ -110,19 +110,17 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: phone */}
+        {/* RIGHT: phone (desktop right, mobile below) */}
         <div className="order-2 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
-          {/* decorative glow behind the phone */}
-          <div className="pointer-events-none absolute -z-10 right-[-12%] top-1/2 -translate-y-1/2 w-[58vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
+          {/* decorative glow — desktop only so it never overlaps/crops text on mobile */}
+          <div className="hidden lg:block pointer-events-none absolute -z-10 right-[-12%] top-1/2 -translate-y-1/2 w-[58vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
 
-          {/* the phone itself (no absolute on mobile) */}
-          <div className="relative mx-auto w-[250px] sm:w-[310px] md:w-[360px] lg:w-[460px] aspect-[9/19] rounded-[40px] overflow-hidden shadow-[0_25px_80px_rgba(17,17,17,0.22)] border border-slate-200 bg-white">
-            <img
-              src="/images/screen-home.png"
-              alt="App screenshot"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
+          {/* phone image — NO border/container, just a rounded image with shadow */}
+          <img
+            src="/images/screen-home.png"
+            alt="App screenshot"
+            className="mx-auto w-[260px] sm:w-[320px] md:w-[380px] lg:w-[480px] aspect-[9/19] rounded-[40px] shadow-[0_25px_80px_rgba(17,17,17,0.22)] object-cover"
+          />
         </div>
       </div>
 
