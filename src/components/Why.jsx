@@ -1,34 +1,37 @@
 import React from "react";
+import { Reveal, Halo, Parallax } from "../components/ScrollFX";
+
 
 const cards = [
   {
     title: "Rent",
     copy: "Borrow what you need, when you need it — directly from locals. Save money, reduce waste, and support your community.",
     img: "/images/why-rent.jpg",
-    href: "/rent",
+    href: "/features#explore",
     cta: "Explore renting",
   },
   {
     title: "Lend",
     copy: "Lend out your unused items to people nearby — earn extra income effortlessly while helping others and reducing collective waste.",
     img: "/images/why-lend.jpg",
-    href: "/lend",
+    href: "/features",
     cta: "Start lending",
   },
   {
     title: "Connect",
-    copy: "Meet locals, reduce waste, and build a greener community.",
+    copy: "Connect with your community, share what you own, and reduce unnecessary consumption.",
     img: "/images/why-connect.jpg",
-    href: "/connect",
-    cta: "Join the community",
+    href: "/FAQ",
+    cta: "Any questions?",
   },
 ];
 
 export default function Why() {
   return (
     <section className="section-pad">
+      <Halo size={800} className="top-[-25%]" />
       <div className="container-xy text-center">
-        <p className="uppercase tracking-widest text-xs text-slate-500 md:mb-6">Why Rent It?</p>
+        <Reveal as="p" className="uppercase tracking-widest text-xs text-slate-500 md:mb-6">Why Rent It?</Reveal>
         <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 mb-4 md:mb-12">
           Own less, live more. Rent anything, anytime, anywhere in NZ
         </h2>

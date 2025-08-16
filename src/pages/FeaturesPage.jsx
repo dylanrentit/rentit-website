@@ -124,7 +124,7 @@ export default function FeaturesPage() {
       <section className="section-pad">
         <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <p className="uppercase tracking-widest text-xs text-slate-500">Explore</p>
+            <p className="uppercase tracking-widest text-xs text-slate-500" id='explore'>Explore</p>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
               View Items with Confidence
             </h2>

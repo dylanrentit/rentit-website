@@ -9,8 +9,8 @@ export default function FAQ(){
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 md:mb-8 lg:mb-5">How can we help?</h2>
           <p className="text-slate-600 mb-5 md:mb-6 lg:mb-8">Our friendly team is ready to help, or you can explore our detailed Support centre for more information.</p>
           <div className="mt-8 md:mt-10 lg:mt-10 flex gap-3">
-            <a className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition" href="#signup">Get started</a>
-            <a className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50" href="#contact">Book a chat</a>
+            <a className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition" href="/faq">More Questions?</a>
+            <a className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50" href="/contact">Book a chat</a>
           </div>
         </aside>
 

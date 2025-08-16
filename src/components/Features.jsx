@@ -32,15 +32,15 @@ const FEATURES = [
   },
 ];
 
-const CYCLE_MS = 8500; // ← pick your speed (e.g., 6500–8000)
-const TRANSITION_S = 1.0; 
+const CYCLE_MS = 8500;
+const TRANSITION_S = 1.0;
+
 export default function Features() {
   const [i, setI] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { margin: "-20% 0px -20% 0px", amount: 0.3 });
   const [paused, setPaused] = useState(false);
 
-  // Auto-cycle when the section is in view (pauses on hover)
   useEffect(() => {
     if (!inView || paused) return;
     const t = setInterval(() => setI((p) => (p + 1) % FEATURES.length), CYCLE_MS);
@@ -51,94 +51,96 @@ export default function Features() {
 
   return (
     <section id="features" className="section-pad" ref={ref}>
-      <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
-        {/* LEFT: visual area */}
-        <div
-          className="relative"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {/* vertical dots nav (like screenshot) */}
-          <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-3">
-            {FEATURES.map((_, idx) => (
-              <button
-                key={idx}
-                aria-label={`Show ${FEATURES[idx].title}`}
-                onClick={() => setI(idx)}
-                className={`h-3 w-3 rounded-full border transition ${
-                  idx === i
-                    ? "bg-brand-600 border-brand-600"
-                    : "bg-white/70 border-slate-300 hover:bg-white"
-                }`}
-              />
-            ))}
-          </div>
+      <div className="container-xy">
+        <div className="rounded-3xl bg-gradient-to-br from-brand-700 to-fuchsia-600 text-white p-8 md:p-12 shadow-xl">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* LEFT: image */}
+            <div
+              className="relative"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              {/* vertical dots */}
+              <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-3">
+                {FEATURES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    aria-label={`Show ${FEATURES[idx].title}`}
+                    onClick={() => setI(idx)}
+                    className={`h-3 w-3 rounded-full border transition ${
+                      idx === i
+                        ? "bg-white border-white"
+                        : "bg-white/50 border-white/70 hover:bg-white/80"
+                    }`}
+                  />
+                ))}
+              </div>
 
-          {/* big image card */}
-          <div className="relative md:ml-6 rounded-4xl overflow-hidden shadow-card bg-gradient-to-br from-brand-600/10 to-fuchsia-500/10">
-            <div className="aspect-[4/3] w-full" />
-            <div className="absolute inset-0">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.img
-                  key={f.img}
-                  src={f.img}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: TRANSITION_S, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </AnimatePresence>
+              {/* big image card */}
+              <div className="relative md:ml-6 rounded-2xl overflow-hidden shadow-lg bg-white/10">
+                <div className="aspect-[4/3] w-full" />
+                <div className="absolute inset-0">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.img
+                      key={f.img}
+                      src={f.img}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ opacity: 0, scale: 1.02 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: TRANSITION_S, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
-          </div>
 
+            {/* RIGHT: text */}
+            <div className="max-w-xl">
+              <p className="uppercase tracking-widest text-xs text-white/70">Features</p>
 
-        </div>
+              <AnimatePresence mode="wait">
+                <motion.h2
+                  key={f.title}
+                  className="text-3xl md:text-4xl font-extrabold tracking-tight"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: TRANSITION_S * 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {f.title}
+                </motion.h2>
+              </AnimatePresence>
 
-        {/* RIGHT: text area */}
-        <div className="max-w-xl">
-          <p className="uppercase tracking-widest text-xs text-slate-500">Features</p>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={f.key}
+                  className="mt-3 text-white/90"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: TRANSITION_S * 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {f.copy}
+                </motion.p>
+              </AnimatePresence>
 
-          <AnimatePresence mode="wait">
-            <motion.h2
-              key={f.title}
-              className="text-3xl md:text-4xl font-extrabold tracking-tight"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: TRANSITION_S * 0.9, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {f.title}
-            </motion.h2>
-          </AnimatePresence>
-
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={f.key}
-              className="text-slate-600 mt-3"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: TRANSITION_S * 0.9, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {f.copy}
-            </motion.p>
-          </AnimatePresence>
-
-          <div className="mt-6 flex items-center gap-4">
-            <button
-              onClick={() => setI((i + 1) % FEATURES.length)}
-              className="rounded-full bg-brand-600 text-white px-4 py-2 text-sm font-semibold shadow-card hover:bg-brand-700 transition"
-            >
-              Next feature
-            </button>
-            <a
-              href="#signup"
-              className="font-semibold text-slate-900 underline decoration-brand-600/50 decoration-2 underline-offset-8 hover:text-brand-700"
-            >
-              Get started →
-            </a>
+              <div className="mt-6 flex items-center gap-4">
+                <button
+                  onClick={() => setI((i + 1) % FEATURES.length)}
+                  className="rounded-full bg-white text-brand-700 px-4 py-2 text-sm font-semibold shadow-card hover:bg-white/90 transition"
+                >
+                  Next feature
+                </button>
+                <a
+                  href="#signup"
+                  className="font-semibold text-white underline decoration-white/50 decoration-2 underline-offset-8 hover:text-white/90"
+                >
+                  Get started →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

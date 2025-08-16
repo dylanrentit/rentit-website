@@ -1,7 +1,9 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Parallax, Reveal, Halo } from "../components/ScrollFX";
 
-const WORDS = ["bikes", "tools", "kayaks", "cameras", "drones", "tents", "speakers", "It"];
+const WORDS = ["bikes","tools","kayaks","cameras","drones","tents","speakers","It"];
+const MARQUEE_ITEMS = ["power tools","cameras","kayaks","dj gear","camping","e-bikes","lenses","party gear","gardening","surfboards"];
 const STEP_MS = 2500;
 
 export default function Hero() {
@@ -10,40 +12,40 @@ export default function Hero() {
 
   useLayoutEffect(() => {
     if (!measurerRef.current) return;
-    const widths = Array.from(measurerRef.current.querySelectorAll("span")).map(
-      (el) => el.offsetWidth
-    );
+    const widths = Array.from(measurerRef.current.querySelectorAll("span")).map(el => el.offsetWidth);
     setSlotWidth(Math.max(...widths, 0));
   }, []);
 
   const prefersReducedMotion = useReducedMotion();
   const [i, setI] = useState(0);
+
   useEffect(() => {
     if (prefersReducedMotion) return;
-    const t = setInterval(() => setI((p) => (p + 1) % WORDS.length), STEP_MS);
+    const t = setInterval(() => setI(p => (p + 1) % WORDS.length), STEP_MS);
     return () => clearInterval(t);
   }, [prefersReducedMotion]);
 
   const word = WORDS[i];
 
   return (
-    <section id="hero" className="relative isolate pt-6 md:pt-24 lg:pt-28">
-      {/* ----- POINTER (desktop/laptop) LAYOUT ----- */}
-      <div className="pointer-only container-xy grid gap-40 items-center lg:grid-cols-2">
+    <section id="hero" className="relative z-10 pt-12 md:pt-20 lg:pt-24">
+      <div className="container-xy grid lg:grid-cols-2 items-center gap-12 lg:gap-16">
         {/* LEFT */}
-        <div className="order-1 space-y-4">
-          <div className="flex flex-wrap gap-2 text-xs">
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">NZ Made</span>
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Sharing Economy</span>
-          </div>
+        <div className="space-y-5 relative">
+          <Reveal y={10}>
+            <div className="flex flex-wrap gap-2 text-xs">
+              <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
+              <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">NZ Made</span>
+              <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Sharing Economy</span>
+            </div>
+          </Reveal>
 
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none">
             <span className="block">Buy less.</span>
-            <span className="block">
+            <span className="block relative">
               <span className="align-baseline">Rent&nbsp;</span>
               <span
-                className="relative inline-block align-baseline h-[1em] overflow-hidden translate-y-[2px]"
+                className="relative inline-block align-baseline h-[1em] overflow-hidden translate-y-[5px]"
                 style={{ width: slotWidth ? `${slotWidth}px` : "auto" }}
               >
                 <AnimatePresence mode="wait">
@@ -53,8 +55,7 @@ export default function Hero() {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-0 bottom-0 bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-fuchsia-500 whitespace-nowrap"
-                    style={{ lineHeight: 1 }}
+                    className="absolute left-0 bottom-0 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-blue-500 whitespace-nowrap leading-none"
                   >
                     {word}
                   </motion.span>
@@ -63,130 +64,54 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p
-            className="text-slate-600 text-lg leading-relaxed max-w-xl break-words"
-            style={{ overflowWrap: "anywhere", textWrap: "balance" }}
-          >
+          <p className="text-slate-600 text-lg max-w-xl">
             Rent anything, anytime, anywhere in New Zealand.
           </p>
 
           <div className="flex gap-3">
-            <a className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold hover:bg-brand-700 transition" href="#signup">
+            <a href="#signup" className="rounded-full bg-violet-600 text-white px-5 py-3 font-semibold hover:bg-violet-700 transition">
               Get early access
             </a>
-            <a className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50" href="#how">
+            <a href="/how-it-works" className="rounded-full border border-slate-300 px-5 py-3 font-semibold text-slate-800 hover:bg-slate-50 transition">
               See how it works
             </a>
           </div>
 
+          {/* horizontal marquee */}
           <div className="overflow-hidden border-y border-slate-200 mt-6">
             <ul className="flex gap-8 py-2 text-xs uppercase tracking-[.2em] text-slate-500 animate-[marquee_26s_linear_infinite] whitespace-nowrap">
-              <li>cameras</li><li>kayaks</li><li>dj gear</li><li>camping</li><li>e-bikes</li>
-              <li>lenses</li><li>party gear</li><li>gardening</li><li>surfboards</li><li>power tools</li>
+              {MARQUEE_ITEMS.map(item => <li key={item}>{item}</li>)}
             </ul>
           </div>
-        </div>
 
-        {/* RIGHT (no container/shadow — just the image) */}
-        <div className="order-2 relative w-full justify-self-end">
-          <div className="pointer-events-none absolute -z-10 right-[-12%] top-1/2 -translate-y-1/2 w-[58vw] max-w-[780px] aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
-          <img
-            src="/images/screen-home.png"
-            alt="App screenshot"
-            className="block h-auto object-contain object-center w-[clamp(400px,50vw,350px)]"
-          />
-        </div>
-      </div>
-
-      {/* ----- TOUCH (phones/tablets) LAYOUT ----- */}
-      <div className="touch-only container-xy px-5 sm:px-6">
-        {/* copy */}
-        <div className="space-y-4">
-          <div className="flex flex-wrap gap-2 text-xs">
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Beta</span>
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">NZ Made</span>
-            <span className="px-2 py-1 rounded-full border border-slate-200 text-slate-600">Sharing Economy</span>
-          </div>
-
-          <h1 className="text-5xl font-extrabold tracking-tight leading-[1.05]">
-            <span className="block">Buy less.</span>
-            <span className="block">
-              <span>Rent&nbsp;</span>
-              <span
-                className="relative inline-block h-[1em] overflow-hidden translate-y-[2px]"
-                style={{ width: slotWidth ? `${slotWidth}px` : "auto" }}
-              >
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={word}
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-0 bottom-0 bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-fuchsia-500 whitespace-nowrap"
-                    style={{ lineHeight: 1 }}
-                  >
-                    {word}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-            </span>
-          </h1>
-
-          <p
-            className="text-slate-600 text-xl leading-relaxed break-words"
-            style={{ overflowWrap: "anywhere", textWrap: "balance" }}
+          {/* width measurer for rotating word */}
+          <div
+            ref={measurerRef}
+            aria-hidden="true"
+            className="absolute opacity-0 pointer-events-none"
+            style={{ left: -9999, top: -9999, position: "absolute" }}
           >
-            Rent anything, anytime, anywhere in New Zealand.
-          </p>
-
-          <div className="flex gap-3">
-            <a className="rounded-full bg-brand-600 text-white px-5 py-3 font-semibold hover:bg-brand-700 transition" href="#signup">
-              Get early access
-            </a>
-            <a className="rounded-full border border-slate-300 px-5 py-3 font-semibold text-slate-800 hover:bg-slate-50" href="#how">
-              See how it works
-            </a>
-          </div>
-
-          <div className="overflow-hidden border-y border-slate-200 mt-6">
-            <ul className="flex gap-8 py-3 text-xs uppercase tracking-[.2em] text-slate-500 animate-[marquee_26s_linear_infinite] whitespace-nowrap">
-              <li>cameras</li><li>kayaks</li><li>dj gear</li><li>camping</li><li>e-bikes</li>
-              <li>lenses</li><li>party gear</li><li>gardening</li><li>surfboards</li><li>power tools</li>
-            </ul>
+            {WORDS.map(w => (
+              <span key={w} className="font-extrabold text-4xl md:text-6xl inline-block mr-4">{w}</span>
+            ))}
           </div>
         </div>
 
-        {/* phone under the copy, always perfectly centered */}
-       <div className="relative mt-10">
-          <div className="pointer-events-none absolute -z-10 left-1/2 -translate-x-1/2 top-6 w-[100vw] max-w-none aspect-square rounded-full bg-gradient-to-b from-brand-500/25 via-fuchsia-400/20 to-brand-500/10 blur-3xl" />
-          <img
-            src="/images/screen-home.png"
-            alt="App screenshot"
-            className="block mx-auto h-auto object-contain object-center w-full"
-          />
+        {/* RIGHT — plain image (no border, no ring, no shadow, no rounded container) */}
+        <div className="relative justify-self-center lg:justify-self-end">
+          <Halo size={560} className="top-[-8%]" />
+          <Parallax strength={24}>
+            <img
+              src="/images/screen-home.png"
+              alt="Rent It app home screen"
+              className="block h-auto w-[clamp(260px,28vw,420px)] max-w-full object-contain object-center"
+            />
+          </Parallax>
         </div>
-
-
       </div>
 
-      <style>{`
-        /* marquee keyframes */
-        @keyframes marquee { to { transform: translateX(-50%) } }
-
-        /* SWITCH BY POINTER CAPABILITY (not width) */
-        /* default to pointer layout hidden on small devices */
-        .pointer-only { display: none; }
-        .touch-only { display: block; }
-
-        @media (hover:hover) and (pointer:fine) {
-          .pointer-only { display: grid; }
-          .touch-only { display: none; }
-        }
-
-        /* defensive: never inherit transforms/position on the phone image */
-        #hero img[alt="App screenshot"] { position: relative; inset: auto; transform: none; }
-      `}</style>
+      {/* marquee keyframes */}
+      <style>{`@keyframes marquee { to { transform: translateX(-50%) } }`}</style>
     </section>
   );
 }
