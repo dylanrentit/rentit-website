@@ -31,10 +31,9 @@ export default function Footer(){
         <div>
           <h4 className="font-semibold mb-2">Legal</h4>
           <ul className="space-y-1 text-slate-600">
-            <li><a href="/legal/terms.pdf">Terms</a></li>
-            <li><a href="/legal/privacy.pdf">Privacy</a></li>
+            <li><a href="/legal/terms.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a></li>
+            <li><a href="/legal/privacy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
             <li><a href="/how-it-works">Fees</a></li>
-            <li><a href="#">Cookie settings</a></li>
           </ul>
 
         </div>
