@@ -26,20 +26,30 @@ export default function Header() {
             className="h-10 w-10 grid place-items-center rounded-lg border border-slate-300 bg-white"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
 
-          <a href="/" className="flex items-baseline gap-1" aria-label="Rent It — Home">
-          <img
-            src="/images/logo-square.png"       // put your square photo here
-            alt="Rent It mark"
-            className="h-[5em] w-[3em] rounded-md object-cover"
-          />
-          <span className="font-black tracking-tight leading-none text-xl md:text-2xl  translate-y-[-30px]">
-            Rent <span className="text-brand-600">It</span>
-          </span>
-        </a>
+          <a
+            href="/"
+            className="flex items-center gap-2"
+            aria-label="Rent It — Home"
+          >
+            <img
+              src="/images/logo-square.png"
+              alt="Rent It mark"
+              className="h-10 w-10 rounded-md object-cover"
+            />
+            <span className="font-black tracking-tight text-xl">
+              Rent <span className="text-brand-600">It</span>
+            </span>
+          </a>
+
           <Link
             to="/signup"
             className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
@@ -50,16 +60,20 @@ export default function Header() {
 
         {/* DESKTOP: logo left + links + CTA */}
         <div className="hidden md:flex items-center justify-between py-1">
-          <a href="/" className="flex items-baseline gap-1" aria-label="Rent It — Home">
-          <img
-            src="/images/logo-square.png"       // put your square photo here
-            alt="Rent It mark"
-            className="h-[5em] w-[3em] rounded-md object-cover"
-          />
-          <span className="font-black tracking-tight leading-none text-xl md:text-2xl  translate-y-[-30px]">
-            Rent <span className="text-brand-600">It</span>
-          </span>
-        </a>
+          <a
+            href="/"
+            className="flex items-center gap-2"
+            aria-label="Rent It — Home"
+          >
+            <img
+              src="/images/logo-square.png"
+              alt="Rent It mark"
+              className="h-10 w-10 rounded-md object-cover"
+            />
+            <span className="font-black tracking-tight text-2xl">
+              Rent <span className="text-brand-600">It</span>
+            </span>
+          </a>
 
           <nav className="flex items-center gap-6">
             {LINKS.map(({ to, label }) => (
@@ -68,7 +82,9 @@ export default function Header() {
                 to={to}
                 className={({ isActive }) =>
                   `font-semibold text-sm ${
-                    isActive ? "text-brand-700" : "text-slate-700 hover:text-brand-700"
+                    isActive
+                      ? "text-brand-700"
+                      : "text-slate-700 hover:text-brand-700"
                   }`
                 }
               >
@@ -87,7 +103,11 @@ export default function Header() {
       </div>
 
       {/* mobile drawer */}
-      <div className={`md:hidden border-t border-slate-200 ${open ? "block" : "hidden"}`}>
+      <div
+        className={`md:hidden border-t border-slate-200 ${
+          open ? "block" : "hidden"
+        }`}
+      >
         <div className="container-xy py-1 grid gap-2">
           {LINKS.map(({ to, label }) => (
             <NavLink
