@@ -77,7 +77,7 @@ export default function Features() {
               </div>
 
               {/* big image card */}
-              <div className="relative md:ml-6 rounded-2xl overflow-hidden shadow-lg bg-white/10">
+              <div className="relative md:ml-6 rounded-2xl overflow-hidden">
                 <div className="aspect-[4/3] w-full" />
                 <div className="absolute inset-0">
                   <AnimatePresence mode="wait" initial={false}>
