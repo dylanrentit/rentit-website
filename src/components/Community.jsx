@@ -2,7 +2,7 @@
 import React from "react";
 import { useReducedMotion } from "framer-motion";
 const PHOTOS = ["/images/community/1.jpg","/images/community/2.jpg","/images/community/3.jpg","/images/community/4.jpg",
-  "/images/community/5.jpg","/images/community/6.jpg","/images/community/7.jpg","/images/community/8.jpg"];
+  "/images/community/5.jpg","/images/community/6.jpg","/images/community/7.jpg"];
 export default function Community(){
   const prefersReducedMotion = useReducedMotion();
   const MARQUEE_CLASS = prefersReducedMotion ? "" : "animate-[marquee_55s_linear_infinite] hover:[animation-play-state:paused]";

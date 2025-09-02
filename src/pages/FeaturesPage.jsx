@@ -100,7 +100,7 @@ export default function FeaturesPage() {
         <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
           <div className="relative mx-auto w-[260px] sm:w-[320px] md:w-[360px] order-2 lg:order-1">
             <div className="relative aspect-[9/18] rounded-[40px] overflow-hidden shadow-card border border-slate-200 bg-white">
-              <img src="/images/placeholders/listing.jpg" alt="Create listing (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/featuresscreen/listing.jpg" alt="Create listing (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
             </div>
           </div>
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="order-1 lg:order-2">
@@ -139,7 +139,7 @@ export default function FeaturesPage() {
           </motion.div>
           <div className="relative mx-auto w-[260px] sm:w-[320px] md:w-[360px]">
             <div className="relative aspect-[9/18] rounded-[40px] overflow-hidden shadow-card border border-slate-200 bg-white">
-              <img src="/images/placeholders/details.jpg" alt="Listing details (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/featuresscreen/details.jpg" alt="Listing details (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function FeaturesPage() {
         <div className="container-xy grid lg:grid-cols-2 gap-10 items-center">
           <div className="relative mx-auto w-[260px] sm:w-[320px] md:w-[360px] order-2 lg:order-1">
             <div className="relative aspect-[9/18] rounded-[40px] overflow-hidden shadow-card border border-slate-200 bg-white">
-              <img src="/images/placeholders/schedule.jpg" alt="Booking calendar (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/featuresscreen/schedule.jpg" alt="Booking calendar (placeholder)" className="absolute inset-0 w-full h-full object-cover" />
             </div>
           </div>
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="order-1 lg:order-2">
