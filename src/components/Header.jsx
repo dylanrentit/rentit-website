@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const LINKS = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/features", label: "Features" },
-  { to: "/resources", label: "Resources"},
+  { to: "/resources", label: "Resources" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" }
 ];
@@ -57,12 +57,6 @@ export default function Header() {
           >
             Join pre-release
           </Link>
-          <Link
-            to="/business"
-            className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
-          >
-            For Business
-          </Link>
         </div>
 
         {/* DESKTOP: logo left + links + CTA */}
@@ -101,22 +95,20 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-  {/*<Link
-    to="/business"
-    className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
-  >
-    For Business
-  </Link>*/}
+            <Link
+              to="/business"
+              className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
+            >
+              For Business
+            </Link>
 
-
-  <Link
-    to="/pre-release"
-    className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
-  >
-    Join pre-release
-  </Link>
-</div>
-
+            <Link
+              to="/pre-release"
+              className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
+            >
+              Join pre-release
+            </Link>
+          </div>
         </div>
       </div>
 
