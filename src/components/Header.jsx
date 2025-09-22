@@ -5,7 +5,8 @@ const LINKS = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/features", label: "Features" },
   { to: "/faq", label: "FAQ" },
-  { to: "/contact", label: "Contact" },
+  { to: "/resources", label: "Resources"},
+  { to: "/contact", label: "Contact" }
 ];
 
 export default function Header() {
@@ -51,10 +52,16 @@ export default function Header() {
           </a>
 
           <Link
-            to="/signup"
+            to="/pre-release"
             className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
           >
             Join pre-release
+          </Link>
+          <Link
+            to="/business"
+            className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
+          >
+            For Business
           </Link>
         </div>
 
@@ -93,12 +100,23 @@ export default function Header() {
             ))}
           </nav>
 
-          <Link
-            to="/signup"
-            className="rounded-full bg-brand-600 text-white px-4 py-2 text-sm font-semibold"
-          >
-            Join pre-release
-          </Link>
+          <div className="flex items-center gap-2">
+  {/*<Link
+    to="/business"
+    className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
+  >
+    For Business
+  </Link>*/}
+
+
+  <Link
+    to="/pre-release"
+    className="rounded-full bg-brand-600 text-white px-3 py-2 text-sm font-semibold"
+  >
+    Join pre-release
+  </Link>
+</div>
+
         </div>
       </div>
 

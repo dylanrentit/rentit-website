@@ -23,7 +23,7 @@ export default function Community(){
           </div>
         </div>
         <div className="mt-10 flex justify-center gap-3">
-          <a href="/contact" className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition">Join pre-release</a>
+          <a href="/pre-release" className="rounded-full bg-brand-600 text-white px-4 py-2 font-semibold shadow-card hover:bg-brand-700 transition">Join pre-release</a>
           <a href="/how-it-works" className="rounded-full border border-slate-300 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-50">See how it works</a>
         </div>
       </div>

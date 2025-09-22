@@ -113,7 +113,7 @@ export default function Hero() {
 
           <div className="flex gap-3">
             <a
-              href="#signup"
+              href="/pre-release"
               className="rounded-full bg-violet-600 text-white px-5 py-3 font-semibold hover:bg-violet-700 transition"
             >
               Get early access

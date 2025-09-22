@@ -134,7 +134,7 @@ export default function Features() {
                   Next feature
                 </button>
                 <a
-                  href="#signup"
+                  href="/pre-release"
                   className="font-semibold text-white underline decoration-white/50 decoration-2 underline-offset-8 hover:text-white/90"
                 >
                   Get started →

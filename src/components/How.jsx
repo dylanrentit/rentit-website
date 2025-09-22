@@ -153,7 +153,7 @@ export default function HowItWorks() {
             {/* CTA under the text */}
             <div className="mt-8 flex justify-end">
               <a
-                href="/contact"
+                href="/pre-release"
                 className="rounded-full bg-brand-600 text-white px-6 py-3 text-sm md:text-base font-semibold shadow-card hover:bg-brand-700 transition"
               >
                 Get started with Rent It

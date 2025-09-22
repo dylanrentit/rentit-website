@@ -72,7 +72,7 @@ export default function FinalCTA() {
             {/* Right: actions */}
             <div className="flex flex-col items-start lg:items-end gap-3 mt-1">
               <a
-                href="/contact"
+                href="/pre-release"
                 className="rounded-full bg-brand-600 text-white px-5 py-3 font-semibold shadow-card hover:bg-brand-700 transition"
               >
                 Join pre-release
