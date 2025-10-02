@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+    <title>Mail Filters for business-uploads@rentit.com</title>
+    <id>tag:mail.google.com,2008:filters:</id>
+    <updated>2025-10-02T12:00:00Z</updated>
+    <author>
+        <name>Gmail</name>
+        <email>business-uploads@rentit.com</email>
+    </author>
+
+    <!-- Filter for Business Upload emails -->
+    <entry>
+        <category term='filter'></category>
+        <title>Business Upload Auto-Filter</title>
+        <id>tag:mail.google.com,2008:filter:001</id>
+        <updated>2025-10-02T12:00:00Z</updated>
+        <content></content>
+        <apps:property name='subject' value='[Business Upload]'/>
+        <apps:property name='hasAttachment' value='true'/>
+        <apps:property name='label' value='Business Uploads'/>
+        <apps:property name='markAsRead' value='false'/>
+        <apps:property name='star' value='true'/>
+        <apps:property name='shouldMarkAsImportant' value='true'/>
+        <apps:property name='neverSpam' value='true'/>
+    </entry>
+
+    <!-- Filter for emails from business-uploads@rentit.com -->
+    <entry>
+        <category term='filter'></category>
+        <title>RentIt Business Domain Filter</title>
+        <id>tag:mail.google.com,2008:filter:002</id>
+        <updated>2025-10-02T12:00:00Z</updated>
+        <content></content>
+        <apps:property name='from' value='business-uploads@rentit.com'/>
+        <apps:property name='label' value='Business Uploads'/>
+        <apps:property name='markAsRead' value='false'/>
+        <apps:property name='shouldMarkAsImportant' value='true'/>
+        <apps:property name='neverSpam' value='true'/>
+    </entry>
+</feed>
